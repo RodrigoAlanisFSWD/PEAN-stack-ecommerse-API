@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import prisma from './database/prisma';
 import authRouter from './routes/authRouter';
 import userRouter from './routes/userRouter';
+import productRouter from './routes/productRouter';
+import categoryRouter from './routes/categoryRouter';
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.set('port', process.env.PORT || 3000);
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+app.use('/api/product', productRouter);
+app.use('/api/category', categoryRouter);
 
 app.listen(app.get('port'),() => {
     console.log(`http://localhost:${app.get('port')}`);

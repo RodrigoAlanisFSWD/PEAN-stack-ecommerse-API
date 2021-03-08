@@ -11,9 +11,25 @@ generator client {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String @db.VarChar()
-  username String @db.VarChar()
-  email String @db.VarChar()
-  password String @db.VarChar()
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String @unique
+  email    String @unique
+  password String
+  role     String @default("USER")
+}
+
+model Category {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Product Product[]
+}
+
+model Product {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Float
+  count      Float
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }

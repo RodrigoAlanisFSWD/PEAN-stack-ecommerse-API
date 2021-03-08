@@ -12,7 +12,8 @@ module.exports = {
                 select: {
                     name: true,
                     username: true,
-                    email: true
+                    email: true,
+                    role: true
                 }
             });
 
