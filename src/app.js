@@ -5,13 +5,17 @@ import authRouter from './routes/authRouter';
 import userRouter from './routes/userRouter';
 import productRouter from './routes/productRouter';
 import categoryRouter from './routes/categoryRouter';
+import cors from 'cors';
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cors({
+    origin: "*"
+}))
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 
 // Routers
 

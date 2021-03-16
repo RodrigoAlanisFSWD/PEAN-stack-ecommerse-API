@@ -43,7 +43,7 @@ module.exports = {
                 }
             })
 
-            const verify = bcrypt.compare(password, user.password);
+            const verify = await bcrypt.compare(password, user.password);
 
             if (!verify) {
                 return res.json({
@@ -63,6 +63,7 @@ module.exports = {
                 token: token    
             });
         } catch (error) {
+            console.log(error)
             return res.json({
                 res: false,
                 auth: false,

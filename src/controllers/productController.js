@@ -133,5 +133,29 @@ module.exports = {
                 data: "Error"
             })
         }
+    },
+  searchBreakPoint: async (req,res) => {
+    try {
+      const data = await prisma.product.findMany({
+        where: {
+          name: {
+            contains: req.params.search
+          }
+        }
+      })
+      
+      return res.json({
+        res: true,
+        auth: true,
+        data
+      })
+    } catch (err) {
+      console.log(err)
+      return res.json({
+        res: false,
+        auth: true,
+        data: "Error"
+      })
     }
+  }
 }
