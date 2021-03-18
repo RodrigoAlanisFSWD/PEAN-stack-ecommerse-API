@@ -64,7 +64,11 @@ module.exports = {
                     id: parseInt(req.params.id)
                 },
                 include: {
-                    Product: true
+                    Product: {
+                        include: {
+                            category: true
+                        }
+                    }
                 },
             });
 
@@ -79,7 +83,7 @@ module.exports = {
             return res.json({
                 res: true,
                 auth: true,
-                data,
+                data: data.Product,
             });
         } catch (error) {
             console.log(error);

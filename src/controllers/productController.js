@@ -141,6 +141,9 @@ module.exports = {
           name: {
             contains: req.params.search
           }
+        },
+        include: {
+            category: true
         }
       })
       
